@@ -1,0 +1,65 @@
+<%= form_for(@record) do |f| %>
+  <% if @record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+      <% @record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_use_coords %><br />
+    <%= f.check_box :start_use_coords %>
+  </div>
+  <div class="field">
+    <%= f.label :stop_use_coords %><br />
+    <%= f.check_box :stop_use_coords %>
+  </div>
+  <div class="field">
+    <%= f.label :start_location %><br />
+    <%= f.text_area :start_location %>
+  </div>
+  <div class="field">
+    <%= f.label :stop_location %><br />
+    <%= f.text_area :stop_location %>
+  </div>
+  <div class="field">
+    <%= f.label :start_odometer %><br />
+    <%= f.text_area :start_odometer %>
+  </div>
+  <div class="field">
+    <%= f.label :stop_odometer %><br />
+    <%= f.text_area :stop_odometer %>
+  </div>
+  <div class="field">
+    <%= f.label :reason %><br />
+    <%= f.text_area :reason %>
+  </div>
+  <div class="field">
+    <%= f.label :start_lat %><br />
+    <%= f.text_area :start_lat %>
+  </div>
+  <div class="field">
+    <%= f.label :start_long %><br />
+    <%= f.text_area :start_long %>
+  </div>
+  <div class="field">
+    <%= f.label :stop_lat %><br />
+    <%= f.text_area :stop_lat %>
+  </div>
+  <div class="field">
+    <%= f.label :stop_long %><br />
+    <%= f.text_area :stop_long %>
+  </div>
+  <div class="field">
+    <%= f.label :car %><br />
+    <%= f.text_area :car %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

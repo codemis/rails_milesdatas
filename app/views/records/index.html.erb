@@ -1,0 +1,39 @@
+<h1>Listing records</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Car</th>
+    <th>Start Location</th>
+    <th>Start Odometer</th>
+    <th>Use Coordinates (Start)</th>
+    <th>Start Latitude</th>
+    <th>Start Longitude</th>
+    <th>Stop Location</th>
+    <th>Stop Odometer</th>
+    <th>Use Coordinates (Stop)</th>
+    <th>Stop Latitude</th>
+    <th>Stop Longitude</th>
+    <th>Reason</th>
+    <th></th>
+  </tr>
+
+<% @records.each do |record| %>
+  <tr>
+    <td><%= record.created_at %></td>
+    <td><%= record.car %></td>
+    <td><%= record.start_location %></td>
+    <td><%= record.start_odometer %></td>
+    <td><%= record.start_use_coords %></td>
+    <td><%= record.start_lat %></td>
+    <td><%= record.start_long %></td>
+    <td><%= record.stop_location %></td>
+    <td><%= record.stop_odometer %></td>
+    <td><%= record.stop_use_coords %></td>
+    <td><%= record.stop_lat %></td>
+    <td><%= record.stop_long %></td>
+    <td><%= record.reason %></td>
+    <td><%= link_to 'Edit', edit_record_path(record) %> | <%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
