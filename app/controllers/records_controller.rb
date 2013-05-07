@@ -10,16 +10,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  # GET /records/new
-  # GET /records/new.json
-  def new
-    @record = Record.new
-
-    respond_to do |format|
-      format.json { render json: @record }
-    end
-  end
-
   # GET /records/1/edit
   def edit
     @record = Record.find(params[:id])
@@ -32,10 +22,8 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.save
-        format.html { redirect_to @record, notice: 'Record was successfully created.' }
         format.json { render json: @record, status: :created, location: @record }
       else
-        format.html { render action: "new" }
         format.json { render json: @record.errors, status: :unprocessable_entity }
       end
     end
