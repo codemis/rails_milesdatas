@@ -1,65 +1,80 @@
-<%= form_for(@record) do |f| %>
-  <% if @record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
-
-      <ul>
-      <% @record.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @record, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :start_use_coords, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :start_use_coords, :class => 'check_box' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :stop_use_coords, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :stop_use_coords, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :start_location, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :stop_location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :stop_location, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_odometer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :start_odometer, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :stop_odometer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :stop_odometer, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :reason, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :reason, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :start_lat, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_long, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :start_long, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :stop_lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :stop_lat, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :stop_long, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :stop_long, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :car, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :car, :class => 'text_area' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :start_use_coords %><br />
-    <%= f.check_box :start_use_coords %>
-  </div>
-  <div class="field">
-    <%= f.label :stop_use_coords %><br />
-    <%= f.check_box :stop_use_coords %>
-  </div>
-  <div class="field">
-    <%= f.label :start_location %><br />
-    <%= f.text_area :start_location %>
-  </div>
-  <div class="field">
-    <%= f.label :stop_location %><br />
-    <%= f.text_area :stop_location %>
-  </div>
-  <div class="field">
-    <%= f.label :start_odometer %><br />
-    <%= f.text_area :start_odometer %>
-  </div>
-  <div class="field">
-    <%= f.label :stop_odometer %><br />
-    <%= f.text_area :stop_odometer %>
-  </div>
-  <div class="field">
-    <%= f.label :reason %><br />
-    <%= f.text_area :reason %>
-  </div>
-  <div class="field">
-    <%= f.label :start_lat %><br />
-    <%= f.text_area :start_lat %>
-  </div>
-  <div class="field">
-    <%= f.label :start_long %><br />
-    <%= f.text_area :start_long %>
-  </div>
-  <div class="field">
-    <%= f.label :stop_lat %><br />
-    <%= f.text_area :stop_lat %>
-  </div>
-  <div class="field">
-    <%= f.label :stop_long %><br />
-    <%= f.text_area :stop_long %>
-  </div>
-  <div class="field">
-    <%= f.label :car %><br />
-    <%= f.text_area :car %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                records_path, :class => 'btn' %>
   </div>
 <% end %>
