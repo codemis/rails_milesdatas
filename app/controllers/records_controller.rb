@@ -2,11 +2,12 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
+    @records = Record.order("created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @records }
+			format.csv { send_data @records.as_csv }
     end
   end
 
