@@ -18,6 +18,10 @@
 # @copyright Copyright 2013 Missional Digerati
 #
 class RecordsController < ApplicationController
+	# Add authentication
+	#
+	before_filter :authenticate, :except => :create
+	
   # GET /records
   # GET /records.json
   def index
@@ -76,4 +80,12 @@ class RecordsController < ApplicationController
       format.json { head :no_content }
     end
   end
+	
+	protected
+
+		def authenticate
+			authenticate_or_request_with_http_basic do |username, password|
+		    username == BASIC_AUTH['username'] && password == BASIC_AUTH['password']
+		  end
+		end
 end
