@@ -19,15 +19,31 @@
 #
 class Record < ActiveRecord::Base
   attr_accessible :car, :reason, :start_lat, :start_location, :start_long, :start_odometer, :start_use_coords, :stop_lat, :stop_location, :stop_long, :stop_odometer, :stop_use_coords
+	attr_reader :distance
+	
+	# calculate the distance
+	#
+	def distance
+		self.stop_odometer.to_i - self.start_odometer.to_i
+	end
+	
 	# sets up the CSV
 	#
 	def self.as_csv(options = {})
-		puts "HERE"
 	  CSV.generate(options) do |csv|
-	    csv << column_names
+			titles = first.attributes.collect{|c| c[0]}
+			titles.push("distance")
+	    csv << titles
+			total_distance = 0
 	    all.each do |record|
-	      csv << record.attributes.values_at(*column_names)
+				values = record.attributes.collect{|c| c[1]}
+				values.push(record.distance)
+	      csv << values
+				total_distance += record.distance
 	    end
+			total_deduction = (total_distance*0.565).round(2)
+			csv << ["Total Distance", total_distance]
+			csv << ["Total Deduction", total_deduction]
 	  end
 	end
 end

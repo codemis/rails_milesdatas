@@ -21,11 +21,19 @@ class RecordsController < ApplicationController
 	# Add authentication
 	#
 	before_filter :authenticate, :except => :create
+	before_filter :api_authenticate, :only => :create
 	
   # GET /records
   # GET /records.json
   def index
-    @records = Record.order("created_at DESC")
+		puts params[:year]
+		if params[:year]
+			start_date = DateTime.new(params[:year].to_i, 1, 1)
+			finish_date = DateTime.new(params[:year].to_i, 12, 31)
+			@records = Record.where(["created_at >= ? AND created_at <= ?", start_date, finish_date]).order("created_at DESC")
+		else
+			@records = Record.order("created_at DESC")
+		end 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -87,5 +95,9 @@ class RecordsController < ApplicationController
 			authenticate_or_request_with_http_basic do |username, password|
 		    username == BASIC_AUTH['username'] && password == BASIC_AUTH['password']
 		  end
+		end
+		
+		def api_authenticate
+			render(json: {:error => "401 Forbidden"}, :status => :forbidden) if params['api_key'].nil? || params['api_key'] != API_AUTH['key']
 		end
 end
