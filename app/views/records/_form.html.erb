@@ -1,8 +1,44 @@
 <%= form_for @record, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
+    <%= f.label :start_location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_location, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :stop_location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :stop_location, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_odometer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_odometer, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :stop_odometer, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :stop_odometer, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :start_use_coords, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :start_use_coords, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_lat, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_lat, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :start_long, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :start_long, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
@@ -12,63 +48,27 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :start_location, :class => 'control-label' %>
+    <%= f.label :stop_lat, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :start_location, :class => 'text_area' %>
+      <%= f.text_field :stop_lat, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :stop_location, :class => 'control-label' %>
+    <%= f.label :stop_long, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :stop_location, :class => 'text_area' %>
+      <%= f.text_field :stop_long, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :start_odometer, :class => 'control-label' %>
+    <%= f.label :car, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :start_odometer, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :stop_odometer, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :stop_odometer, :class => 'text_area' %>
+      <%= f.text_field :car, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :reason, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :reason, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :start_lat, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :start_lat, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :start_long, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :start_long, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :stop_lat, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :stop_lat, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :stop_long, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :stop_long, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :car, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :car, :class => 'text_area' %>
     </div>
   </div>
 
